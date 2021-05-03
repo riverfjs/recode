@@ -63,17 +63,17 @@ class_id2name = {
 class_list = [class_id2name[i] for i in list(range(args.num_classes))]
 def main():
     # Data
-    # TRAIN = args.trainroot
-    # VAL = args.valroot
-    TRAIN = '/content/train'
-    VAL = '/content/val'
+    TRAIN = args.trainroot
+    VAL = args.valroot
+    # TRAIN = '/content/train'
+    # VAL = '/content/val'
     transform = get_transforms(input_size=args.image_size, test_size=args.image_size, backbone=None)
 
     print('==> Preparing dataset %s' % args.trainroot)
-    trainset = datasets.ImageFolder(root=TRAIN, transform=transform['train'])
-    valset = datasets.ImageFolder(root=VAL, transform=transform['val'])
-    # trainset = dataset.Dataset(root=args.trainroot, transform=transform['train'])
-    # valset = dataset.TestDataset(root=args.valroot, transform=transform['val'])
+    # trainset = datasets.ImageFolder(root=TRAIN, transform=transform['train'])
+    # valset = datasets.ImageFolder(root=VAL, transform=transform['val'])
+    trainset = dataset.Dataset(root=args.trainroot, transform=transform['train'])
+    valset = dataset.TestDataset(root=args.valroot, transform=transform['val'])
 
     train_loader = DataLoader(
         trainset, 
@@ -96,7 +96,7 @@ def main():
     # TODO:merge in function
     for k,v in model.named_parameters():
       # print("{}: {}".format(k,v.requires_grad))
-      if not k.startswith('7') and not k.startswith('fc'):
+      if not k.startswith('layer4') and not k.startswith('fc'):
         # print(k)
         v.requires_grad = False
     # sys.exit(0)

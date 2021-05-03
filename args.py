@@ -52,12 +52,12 @@ parser.add_argument('--final-lr', '--fl', default=1e-3,type=float,
                     metavar='W', help='weight decay (default: 1e-3)')
 parser.add_argument('--ngpu', default=0, type=int, help='num_gpu')
 # Checkpoints
-parser.add_argument('-c', '--checkpoint', default='/content/drive/Shareddrives/riverfjs/model/checkpoint/test4', type=str, metavar='PATH',
+parser.add_argument('-c', '--checkpoint', default='/content/recode/ckp/test', type=str, metavar='PATH',
                     help='path to save checkpoint (default: checkpoint)')
 parser.add_argument('--resume', default='', type=str, metavar='PATH',
                     help='path to latest checkpoint (default: none)')
 # Architecture //resnext101_32x16d_wsl
-parser.add_argument('--arch', '-a', metavar='ARCH', default='botnext101',
+parser.add_argument('--arch', '-a', metavar='ARCH', default='BoTNet101',
                     choices=model_names,
                     help='model architecture: ' +
                         ' | '.join(model_names) +
